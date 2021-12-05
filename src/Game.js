@@ -1,43 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import ItemButton from "./ItemButton";
+import ButtonRow from "./ButtonRow.js";
+import Score from "./Score";
+import GameEndControl from "./GameEndControl";
 
 const Game = () => {
 
-    var parFicha = [];
-    var [fichasClickeadas, setFichasClickeadas] = useState(0);
-    var [puntaje, setPuntaje] = useState(0);
-    var [gameOver, setGameOver] = useState(false);
     const location = useLocation();
     const dimension = parseInt(location.state);
-
-    useEffect(() => {
-        document.addEventListener("itemButtonClick", (info) => {
-            checkScore(info.detail);
-        });
-    }, []);
-
-    const checkScore = (n) => {
-        setFichasClickeadas(fichasClickeadas++);
-        //Chequea si todas las fichas fueron clickeadas
-        if(fichasClickeadas == dimension*dimension){
-            console.log("Game over");
-            setGameOver(true);
-        }
-
-        if(parFicha.length == 0){
-            parFicha.push(n);
-        } else {
-            if(parFicha.every((it) => it == n)){
-                setPuntaje(puntaje++)
-                parFicha = [];
-                
-            } else {
-                setPuntaje(puntaje--)
-                parFicha = [];
-            }
-        }
-    }
 
     const sortRandom = (list) => {
         return (list.map((value) => ({ value, sort: Math.random() }))
@@ -74,20 +44,17 @@ const Game = () => {
     return(
         <div>
             <div className="container-fluid">
-                <text className="scoreText">Puntaje:{puntaje}</text>       
+                       
             </div>
             <div className="container">
                 {setUpTablero(dimension).map((fila) => (
-                    <div className="col">
-                        {fila.map((item) => (
-                            <ItemButton id="item-button" item={item}/>
-                        ))}
-                    </div>
+                    <ButtonRow items={fila}/>
                 ))}
             </div>
             <div>
-                {gameOver ? `Fin. Puntaje:${puntaje}` : "En progreso"}
+                <Score dimension={dimension}/>
             </div>
+            <GameEndControl dimension={dimension}/>
         </div>
     )
 }
