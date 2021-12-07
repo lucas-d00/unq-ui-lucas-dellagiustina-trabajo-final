@@ -2,69 +2,38 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Cómo descargar el proyecto
 
-In the project directory, you can run:
+Primero, se necesita tener descargada la última versión LTS de Node.js. Se la puede encontrar en
+https://nodejs.org
+Al entrar al sitio el mismo brinda un botón de descarga adecuado al sistema operativo de su computadora.Descargue el archivo.
 
-### `npm start`
+Luego se debe descargar este proyecto a su máquina. Dando por sentado que está leyendo esto, es seguro que ya está en la página del repositorio Git del proyecto. De otro modo, puede utilizar este link para acceder al mismo:
+https://github.com/lucas-d00/unq-ui-lucas-dellagiustina-trabajo-final
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ya en la página del repositorio, debe ubicar el botón verde que dice "Code" en la parte superior de la vista del proyecto. Al clickearlo verá una serie de opciones, debe seleccionar la que dice "Download zip" para poder descargar los archivos del proyecto.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Para poder acceder al proyecto y ejecutarlo se puede utilizar el Símbolo del sistema en Windows o el equivalente de su sistema operativo, o también se puede descargar GitBash (MINGW64 en Windows) en la siguiente página:
+https://git-scm.com/downloads
 
-### `npm test`
+Allí se puede escoger entre la versión para MacOS, Windows y Linux. Elija la opción correspondiente a su sistema operativo y descargue el instalador.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cómo instalar el proyecto
 
-### `npm run build`
+Luego de descargar todo lo necesario, se debe comenzar por instalar Node.js en su sistema. Para hacer esto, debe ejecutar el instalador descargado anteriormente. El instalador lo guiará en el proceso, donde puede elegir dónde se van a ubicar los archivos.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Después de instalar Node.js, puede realizar una verificación abriendo cualquier consola del sistema (Gitbash inclusive) y escribir "npm --version". Al recibir una respuesta con el número de versión, se confirmará que lleva instalado lo necesario para poder ejecutar la aplicación.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A continuación, debe descomprimir el proyecto descargado previamente. Para ello debe abrir el archivo .zip y mover los archivos a cualquier otro directorio de su elección.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Cómo ejecutar el proyecto
 
-### `npm run eject`
+Hecho esto, se debe abrir la consola con la cual accederá al directorio donde descomprimió los archivos del proyecto, utilizando el comando "cd <...directorio.../unq-ui-lucas-dellagiustina-trabajo-final>" 
+(Por ejemplo: cd C:/Users/Usuario/Desktop/unq-ui-lucas-dellagiustina-trabajo-final)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Ya situado en el directorio de la aplicación, proceda a escribir el siguiente comando en la terminal/consola:
+"npm start"
+Esto hará que se comience a ejecutar la aplicación. Luego de unos minutos, su navegador abrirá una pestaña en la cual debería poder verse el menú del juego.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para detener la ejecución de la aplicación, debemos abrir la consola y presionar las teclas CTRL + C.
+Después de esto se puede cerrar la página donde estaba la aplicación y la consola. Para volver a ejecutarlo, simplemente basta con situarse en el directorio otra vez (A menos que ya esté situado) y escribir "npm start".
