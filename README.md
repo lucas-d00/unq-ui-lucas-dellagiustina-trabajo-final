@@ -37,3 +37,5 @@ Esto hará que se comience a ejecutar la aplicación. Luego de unos minutos, su 
 
 Para detener la ejecución de la aplicación, debemos abrir la consola y presionar las teclas CTRL + C.
 Después de esto se puede cerrar la página donde estaba la aplicación y la consola. Para volver a ejecutarlo, simplemente basta con situarse en el directorio otra vez (A menos que ya esté situado) y escribir "npm start".
+
+También, en el caso de que la pestaña se cierre, no es necesario detener y volver a ejecutar la aplicación desde la consola. Si ya está ejecutándose, sólo basta con volver a abrir la página escribiendo la URL en la cual se cargó por primera vez. Usualmente esta URL comienza con "http://localhost/..." seguida por un puerto, el cual usualmente es el 3000. 

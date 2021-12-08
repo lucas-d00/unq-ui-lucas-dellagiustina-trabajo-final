@@ -1,7 +1,6 @@
 import { useState } from "react";
-import GameEndControl from "./GameEndControl";
 
-const Score = (props) => {
+const Puntaje = (props) => {
 
     var parFicha = [];
     var [puntaje, setPuntaje] = useState(0);
@@ -38,7 +37,7 @@ const Score = (props) => {
         
     }
 
-    document.addEventListener("itemButtonClick", (info) => {
+    document.addEventListener("clickBotonItem", (info) => {
         checkPuntaje(info.detail);
     });
 
@@ -58,4 +57,4 @@ const Score = (props) => {
     )
 }
 
-export default Score;
+export default Puntaje;
