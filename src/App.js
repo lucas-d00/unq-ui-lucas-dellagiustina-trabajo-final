@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<MenuPrincipal/>}>
           <Route path="opciones" element={<Opciones/>}/>
         </Route>
-        <Route path="/jugar/:dimensionTablero" element={<Juego/>}/>
+        <Route path="/jugar/:modoDeJuego/:dimensionTablero" element={<Juego/>}/>
       </Routes>
     </BrowserRouter>  
   );

@@ -1,18 +1,29 @@
-import ItemButton from "./BotonItem";
+import BotonItem from "./BotonItem";
 
-const ButtonRow = (props) => {
+const FilaBotones = (props) => {
 
     const items = props.items;
+    const nroFila = props.nroFila;
+    const dimension = props.dimensionTablero;
+    
+    const indices = () => {
+        var indices = [];
+        for(let i=1; i <= items.length; i++){
+            indices.push(i);
+        }
+        
+        return indices;
+    }
 
     return(
         <div>
             <div className="col">
-                {items.map((item) => (
-                    <ItemButton item={item}/>
+                {indices().map((i) => (
+                    <BotonItem id={dimension*nroFila + i} item={items[i-1]}/>
                 ))}
             </div>
         </div>
     )
 }
 
-export default ButtonRow;
+export default FilaBotones;

@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FilaBotones from "./FilaBotones.js";
 import Puntaje from "./Puntaje";
 import ControlFinDelJuego from "./ControlFinDelJuego";
 
 const Juego = () => {
     
-    const location = useLocation();
-    const {dimensionTablero} = (useParams());
+    const {dimensionTablero} = useParams();
+    const {modoDeJuego} = useParams();
     const dimension = parseInt(dimensionTablero);
 
     const sortRandom = (list) => {
@@ -37,20 +36,22 @@ const Juego = () => {
         return tablero.concat(tableroCopia).map(sortRandom);
     }
 
+    var tableroDeJuego = setUpTablero(dimension);
+
     return(
         <div>
             <div className="container-fluid">
                        
             </div>
             <div className="container">
-                {setUpTablero(dimension).map((fila) => (
-                    <FilaBotones items={fila}/>
+                {tableroDeJuego.map((fila, i) => (
+                    <FilaBotones nroFila={i} items={fila} dimensionTablero={dimension}/>
                 ))}
             </div>
             <div>
-                <Puntaje dimension={dimension}/>
+                <Puntaje modoDeJuego={modoDeJuego}/>
             </div>
-            <ControlFinDelJuego dimension={dimension}/>
+            <ControlFinDelJuego dimension={dimension} tablero={tableroDeJuego}/>
         </div>
     )
 }

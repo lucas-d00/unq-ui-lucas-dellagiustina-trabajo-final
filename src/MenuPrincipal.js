@@ -15,16 +15,20 @@ const MainMenu = () => {
         setDimension(info.detail);
     });
 
-    const goToGame = () => {
-        navigate("/jugar/"+ dimension);
+    const irAJuegoSolo = () => {
+        navigate("/jugar/solo/"+ dimension);
     }
-    const goToOptions = () => navigate("options");
+    const irAJuegoDos = () => {
+        navigate("/jugar/versus/"+ dimension);
+    }
+    const irAOpciones = () => navigate("opciones");
 
     return(
-        <div>
+        <div className="container-fluid">
             <h1>MemoTest</h1>
-            <button type="button" className="btn btn-primary" onClick={goToGame}>Jugar</button>
-            <button type="button" className="btn btn-secondary" onClick={goToOptions}>Opciones</button>
+            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={irAJuegoSolo}>Jugar solo</button>
+            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={irAJuegoDos}>Jugar 2vs2</button>
+            <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={irAOpciones}>Opciones</button>
             <Outlet/>
         </div>
     )

@@ -3,35 +3,68 @@ import { useState } from "react";
 const Puntaje = (props) => {
 
     var parFicha = [];
-    var [puntaje, setPuntaje] = useState(0);
+    //var turno = 1;
+    var modoDosJugadoresActivo = props.modoDeJuego == "versus";
+    var [turno, setTurno] = useState(1);
+    var [puntajes, setPuntajes] = useState([0,0]);
     var [gameOver, setGameOver] = useState(false);
 
+    const cambiarTurno = () => {
+        if(turno == 1){
+            setTurno(2);
+        }  else {
+            setTurno(1);
+        }
+        console.log(turno);
+    }
+
     const incrementarPuntaje = () => {
-        setPuntaje(puntaje+1);
+        if(turno == 1){
+            var puntajeJugadorUno = puntajes[0] + 1;
+            var puntajeJugadorDos = puntajes[1];
+            setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
+        } else{
+            var puntajeJugadorDos = puntajes[1] + 1;
+            var puntajeJugadorUno = puntajes[0];
+            setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
+        }
     }
 
     const decrementarPuntaje = () => {
-        setPuntaje(puntaje-1);
+        if(turno == 1){
+            var puntajeJugadorUno = puntajes[0] - 1;
+            var puntajeJugadorDos = puntajes[1];
+            setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
+        } else{
+            var puntajeJugadorDos = puntajes[1] - 1;
+            var puntajeJugadorUno = puntajes[0];
+            setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
+        }
     }
 
-    const checkPuntaje = (n) => {
+    const acierto = () => {
+        incrementarPuntaje();
+        const event = new CustomEvent('puntajeAcierto', { detail : parFicha});
+        document.dispatchEvent(event);
+    }
 
-        parFicha.push(n);
+    const errada = () => {
+        decrementarPuntaje();
+        const event = new CustomEvent('puntajeErrada', { detail : parFicha});
+        document.dispatchEvent(event);
+    }
+
+    const checkPuntaje = (fichaClickeada) => {
+        
+        parFicha.push(fichaClickeada);
         if(parFicha.length > 1) {
-            if(parFicha.every((it) => it == n)){
-                //Acierto
-                incrementarPuntaje();
-                const event = new CustomEvent('puntajeAcierto', { detail : parFicha});
-                document.dispatchEvent(event);
-                parFicha = [];
-                
+            if(parFicha.some((it) => it.item == fichaClickeada.item && !(it.id == fichaClickeada.id))){
+                acierto();
             } else {
-                //Errada
-                decrementarPuntaje();
-                const event = new CustomEvent('puntajeErrada', { detail : parFicha});
-                document.dispatchEvent(event);
-                parFicha = [];
+                errada();
             }
+            if(modoDosJugadoresActivo) cambiarTurno();
+            parFicha = [];
         }
 
         
@@ -39,6 +72,7 @@ const Puntaje = (props) => {
 
     document.addEventListener("clickBotonItem", (info) => {
         checkPuntaje(info.detail);
+        
     });
 
     document.addEventListener("finDelJuego", () => {
@@ -46,12 +80,16 @@ const Puntaje = (props) => {
     });
 
     return(
-        <div>
-            <div>
-                <p>Puntaje: </p> {puntaje}
+        <div className="container-fluid">
+            <div className="puntajes">
+                <p>
+                {modoDosJugadoresActivo ? `Puntaje Jugador Uno: ${puntajes} Puntaje Jugador Dos: ${puntajes}` : `Puntaje: ${puntajes}`}
+                </p>
             </div>
-            <div>
-                {gameOver? `Fin del juego. Puntaje: ${puntaje}` : "En progreso"}
+            <div className="estadoDelJuego">
+                <p>
+                    {gameOver ? `Fin del juego. ${modoDosJugadoresActivo? "Ganador" : `Puntaje: ${puntajes}`}` : "Juego en progreso." }
+                </p>
             </div>
         </div>
     )

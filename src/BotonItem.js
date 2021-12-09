@@ -1,27 +1,28 @@
 import { useState } from "react";
 
-const ItemButton = (props) => {
+const BotonItem = (props) => {
     
     const item = props.item;
+    const id = props.id;
     const [oculto, setOculto] = useState(true);
     const [deshabilitado, setDeshabilitado] = useState(false);
 
     const triggerClickeo = () => {
         setOculto(false);
-        const event = new CustomEvent('clickBotonItem', { detail : item});
+        const event = new CustomEvent('clickBotonItem', { detail : { id : id, item : item}});
         document.dispatchEvent(event);
     }
 
     document.addEventListener("puntajeAcierto", (info) => {
         var parFicha = info.detail;
-        if(parFicha.some((i) => i == item)){
+        if(parFicha.some((i) => i.id == id)){
             setDeshabilitado(true);
         }
     });
 
     document.addEventListener("puntajeErrada", (info) => {
         var parFicha = info.detail;
-        if(parFicha.some((i) => i == item)){
+        if(parFicha.some((i) => i.id == id)){
             setOculto(true);
         }
     });
@@ -34,4 +35,4 @@ const ItemButton = (props) => {
     )
 }
 
-export default ItemButton;
+export default BotonItem;
