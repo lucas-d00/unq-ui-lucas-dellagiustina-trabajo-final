@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import FilaBotones from "./FilaBotones.js";
 import Puntaje from "./Puntaje";
 import ControlFinDelJuego from "./ControlFinDelJuego";
 
 const Juego = () => {
     
+    const navigate = useNavigate();
     const {dimensionTablero} = useParams();
     const {modoDeJuego} = useParams();
     const dimension = parseInt(dimensionTablero);
@@ -36,22 +37,26 @@ const Juego = () => {
         return tablero.concat(tableroCopia).map(sortRandom);
     }
 
+    const irAlMenu = () => {
+        navigate("/");
+        window.location.reload();
+    }
+
+
     var tableroDeJuego = setUpTablero(dimension);
 
     return(
-        <div>
-            <div className="container-fluid">
-                       
-            </div>
-            <div className="container">
+        <div className="container-fluid juego">
+            <div className="container-fluid tablero">
                 {tableroDeJuego.map((fila, i) => (
                     <FilaBotones nroFila={i} items={fila} dimensionTablero={dimension}/>
                 ))}
             </div>
-            <div>
+            <div className="container-fluid puntaje">
                 <Puntaje modoDeJuego={modoDeJuego}/>
             </div>
             <ControlFinDelJuego dimension={dimension} tablero={tableroDeJuego}/>
+            <button type="button" className="btn btn-primary" onClick={irAlMenu}>Volver al menú principal</button>
         </div>
     )
 }

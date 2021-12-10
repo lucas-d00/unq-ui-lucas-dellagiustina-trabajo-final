@@ -13,9 +13,12 @@ const Opciones = () => {
 
     return(
         <div>
-            <h1>Opciones</h1>
-            <button type="button" className="btn btn-primary" onClick={setDimensionGrande}>Tablero Grande</button>
-            <button type="button" className="btn btn-primary" onClick={setDimensionChica}>Tablero Chico</button>
+            <div className="row">
+            <button type="button" className="container-fluid btn btn-secondary rounded-0 botonOpciones" onClick={setDimensionGrande}>Tablero Grande</button>
+            </div>
+            <div className="row">
+            <button type="button" className="container-fluid btn btn-secondary rounded-0 botonOpciones" onClick={setDimensionChica}>Tablero Chico</button>
+            </div>
         </div>
     )
 }

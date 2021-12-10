@@ -3,7 +3,6 @@ import { useState } from "react";
 const Puntaje = (props) => {
 
     var parFicha = [];
-    //var turno = 1;
     var modoDosJugadoresActivo = props.modoDeJuego == "versus";
     var [turno, setTurno] = useState(1);
     var [puntajes, setPuntajes] = useState([0,0]);
@@ -15,7 +14,6 @@ const Puntaje = (props) => {
         }  else {
             setTurno(1);
         }
-        console.log(turno);
     }
 
     const incrementarPuntaje = () => {
@@ -66,8 +64,6 @@ const Puntaje = (props) => {
             if(modoDosJugadoresActivo) cambiarTurno();
             parFicha = [];
         }
-
-        
     }
 
     document.addEventListener("clickBotonItem", (info) => {
@@ -83,12 +79,16 @@ const Puntaje = (props) => {
         <div className="container-fluid">
             <div className="puntajes">
                 <p>
-                {modoDosJugadoresActivo ? `Puntaje Jugador Uno: ${puntajes} Puntaje Jugador Dos: ${puntajes}` : `Puntaje: ${puntajes}`}
+                {modoDosJugadoresActivo ? `Puntaje Jugador Uno: ${puntajes[0]} --- Puntaje Jugador Dos: ${puntajes[1]}` : `Puntaje: ${puntajes[0]}`}
                 </p>
             </div>
             <div className="estadoDelJuego">
                 <p>
-                    {gameOver ? `Fin del juego. ${modoDosJugadoresActivo? "Ganador" : `Puntaje: ${puntajes}`}` : "Juego en progreso." }
+                    {gameOver ? 
+                        `Fin del juego. 
+                            ${modoDosJugadoresActivo? 
+                                `Ganador: ${puntajes[0] > puntajes[1]? "Jugador 1" : "Jugador 2"}` : `Puntaje: ${puntajes}`}` 
+                        : "Juego en progreso." }
                 </p>
             </div>
         </div>

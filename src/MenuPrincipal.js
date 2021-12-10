@@ -1,10 +1,12 @@
 import { useNavigate} from "react-router-dom";
 import { useState } from "react";
-import { Outlet } from "react-router";
+import BotonMenu from "./BotonMenu.js";
+import Opciones from "./Opciones.js";
 
 const MainMenu = () => {
 
     const [dimension, setDimension] = useState("4");
+    const [visibilidadOpciones, setVisibilidadOpciones] = useState(false);
     const navigate = useNavigate();
 
     document.addEventListener("dimensionGrandeSet", (info) => {
@@ -21,15 +23,15 @@ const MainMenu = () => {
     const irAJuegoDos = () => {
         navigate("/jugar/versus/"+ dimension);
     }
-    const irAOpciones = () => navigate("opciones");
+    const toggleOpciones = () => setVisibilidadOpciones(!visibilidadOpciones);
 
     return(
-        <div className="container-fluid">
-            <h1>MemoTest</h1>
-            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={irAJuegoSolo}>Jugar solo</button>
-            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={irAJuegoDos}>Jugar 2vs2</button>
-            <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={irAOpciones}>Opciones</button>
-            <Outlet/>
+        <div className="container-fluid menu">
+            <h1 className="textoMenu">MemoTest</h1>
+            <BotonMenu funcion={irAJuegoSolo} texto="Jugar solo"/>
+            <BotonMenu funcion={irAJuegoDos} texto="Jugar 2 vs 2"/>
+            <BotonMenu funcion={toggleOpciones} texto="Opciones"/>
+            {visibilidadOpciones? <Opciones/> : ""}
         </div>
     )
 

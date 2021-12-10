@@ -9,7 +9,8 @@ const ControlFinDelJuego = (props) => {
     const previewTablero = () => {
         //Una pequeña preview del tablero para ayudar al jugador cuando
         //comienza el juego.
-        var preview = tablero.toString()
+        var preview = [];
+        tablero.map((fila) => preview.push("["+fila.toString()+"]"))
         
         return preview;
     }
@@ -24,13 +25,14 @@ const ControlFinDelJuego = (props) => {
         setFichasJugadas(fichasJugadas+2);
         if(fichasJugadas == dimension*dimension){
             finalizarJuego();
+            setFichasJugadas(0);
         }
     })
 
     return (
-        <p>
+        <div className="container-fluid controlFinDelJuego">
             {fichasJugadas == 2? `Preview: ${previewTablero()}` : ""}
-        </p>
+        </div>
     );
 }
 

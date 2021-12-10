@@ -8,9 +8,11 @@ const BotonItem = (props) => {
     const [deshabilitado, setDeshabilitado] = useState(false);
 
     const triggerClickeo = () => {
-        setOculto(false);
+        
+        setOculto(false)
         const event = new CustomEvent('clickBotonItem', { detail : { id : id, item : item}});
-        document.dispatchEvent(event);
+        document.dispatchEvent(event)
+        
     }
 
     document.addEventListener("puntajeAcierto", (info) => {
@@ -23,7 +25,8 @@ const BotonItem = (props) => {
     document.addEventListener("puntajeErrada", (info) => {
         var parFicha = info.detail;
         if(parFicha.some((i) => i.id == id)){
-            setOculto(true);
+            //Espera unos milisegundos antes de volver a esconder la ficha
+            setTimeout(() => setOculto(true), 500);
         }
     });
 
