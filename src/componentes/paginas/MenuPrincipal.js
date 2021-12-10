@@ -1,7 +1,7 @@
 import { useNavigate} from "react-router-dom";
 import { useState } from "react";
-import BotonMenu from "./BotonMenu.js";
-import Opciones from "./Opciones.js";
+import BotonMenu from "../auxiliares/BotonMenu.js";
+import Opciones from "../auxiliares/Opciones.js";
 
 const MainMenu = () => {
 

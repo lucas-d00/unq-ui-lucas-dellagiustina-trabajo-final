@@ -1,0 +1,39 @@
+.textoMenu {
+  text-align: center;
+}
+
+.menu {
+  padding: 4%;
+  align-items: center;
+}
+
+.botonMenu {
+  width: 30%;
+}
+
+.botonOpciones {
+  width: 20%;
+}
+
+.juego{
+  padding: 20px;
+  background-color: #eeeeee;
+}
+
+.tablero{
+  padding: 20px;
+  background-color: #282c34;
+}
+
+.puntaje{
+  background-color: #888888;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.controlFinDelJuego{
+  padding:10px;
+}
+
+
+

@@ -76,7 +76,8 @@ const Puntaje = (props) => {
         <div className="container-fluid">
             <div className="puntajes">
                 <p>
-                {modoDosJugadoresActivo ? `Puntaje Jugador Uno: ${puntajes[0]} --- Puntaje Jugador Dos: ${puntajes[1]}` : `Puntaje: ${puntajes[0]}`}
+                {modoDosJugadoresActivo ? `Puntaje Jugador Uno: ${puntajes[0]} --- Puntaje Jugador Dos: ${puntajes[1]}` 
+                                        : `Puntaje: ${puntajes[0]}`}
                 </p>
             </div>
             <div className="estadoDelJuego">
@@ -91,7 +92,7 @@ const Puntaje = (props) => {
                         `Fin del juego. 
                             ${modoDosJugadoresActivo? 
                                 `Ganador: ${puntajes[0] > puntajes[1]? "Jugador 1" : "Jugador 2"}` 
-                                : `Puntaje: ${puntajes}`}` 
+                                : `Puntaje: ${puntajes[0]}`}` 
                         : "Juego en progreso." }
                 </p>
             </div>

@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-import FilaBotones from "./FilaBotones.js";
-import Puntaje from "./Puntaje";
-import ControlFinDelJuego from "./ControlFinDelJuego";
+import FilaBotones from "../auxiliares/FilaBotones.js";
+import Puntaje from "../auxiliares/Puntaje";
+import ControladorFinDelJuego from "../auxiliares/ControladorFinDelJuego";
 
 const Juego = () => {
     
@@ -55,7 +55,7 @@ const Juego = () => {
             <div className="container-fluid puntaje">
                 <Puntaje modoDeJuego={modoDeJuego}/>
             </div>
-            <ControlFinDelJuego dimension={dimension} tablero={tableroDeJuego}/>
+            <ControladorFinDelJuego dimension={dimension} tablero={tableroDeJuego}/>
             <button type="button" className="btn btn-primary" onClick={irAlMenu}>Volver al menú principal</button>
         </div>
     )

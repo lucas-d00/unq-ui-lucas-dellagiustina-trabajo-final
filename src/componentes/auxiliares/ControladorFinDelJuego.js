@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ControlFinDelJuego = (props) => {
+const ControladorFinDelJuego = (props) => {
 
     const dimension = props.dimension;
     const tablero = props.tablero;
@@ -36,4 +36,4 @@ const ControlFinDelJuego = (props) => {
     );
 }
 
-export default ControlFinDelJuego;
+export default ControladorFinDelJuego;

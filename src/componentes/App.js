@@ -1,17 +1,14 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import MenuPrincipal from './MenuPrincipal';
-import Juego from './Juego'
-import Opciones from './Opciones';
+import MenuPrincipal from './paginas/MenuPrincipal';
+import Juego from './paginas/Juego'
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MenuPrincipal/>}>
-          <Route path="opciones" element={<Opciones/>}/>
-        </Route>
+        <Route path="/" element={<MenuPrincipal/>}/>
         <Route path="/jugar/:modoDeJuego/:dimensionTablero" element={<Juego/>}/>
       </Routes>
     </BrowserRouter>  
