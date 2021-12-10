@@ -29,15 +29,12 @@ const Puntaje = (props) => {
     }
 
     const decrementarPuntaje = () => {
-        if(turno == 1){
+        if(!modoDosJugadoresActivo){
             var puntajeJugadorUno = puntajes[0] - 1;
             var puntajeJugadorDos = puntajes[1];
             setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
-        } else{
-            var puntajeJugadorDos = puntajes[1] - 1;
-            var puntajeJugadorUno = puntajes[0];
-            setPuntajes([puntajeJugadorUno, puntajeJugadorDos]);
         }
+        //No decrementa el puntaje en el modo 2vs2
     }
 
     const acierto = () => {
@@ -84,10 +81,17 @@ const Puntaje = (props) => {
             </div>
             <div className="estadoDelJuego">
                 <p>
+                    {modoDosJugadoresActivo? `Turno del ${turno == 1? 
+                                                            "Jugador 1" 
+                                                            : "Jugador 2"}` 
+                                            : ""}
+                </p>
+                <p>
                     {gameOver ? 
                         `Fin del juego. 
                             ${modoDosJugadoresActivo? 
-                                `Ganador: ${puntajes[0] > puntajes[1]? "Jugador 1" : "Jugador 2"}` : `Puntaje: ${puntajes}`}` 
+                                `Ganador: ${puntajes[0] > puntajes[1]? "Jugador 1" : "Jugador 2"}` 
+                                : `Puntaje: ${puntajes}`}` 
                         : "Juego en progreso." }
                 </p>
             </div>

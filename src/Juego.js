@@ -17,24 +17,24 @@ const Juego = () => {
     }
 
     const setUpTablero = (dimension) => {
-        const tablero = [];
-        var coeff = 0;
-
-        //Crea la mitad del tablero y luego hace una copia
-
-        for(let i = 1; i <= dimension / 2; i++){
-            var nuevaFila = [];
-            for(let i = 1; i <= dimension; i++){
-                nuevaFila.push(i + (coeff * dimension));
-            }
-            tablero.push(nuevaFila);
-            coeff ++;
+        const tableroInicial = [];
+        
+        //Crea el tablero con los par de números iguales
+        for(let i = 1; i <= (dimension * dimension) / 2; i++){
+            tableroInicial.push(i);
+            tableroInicial.push(i);
         }
 
-        var tableroCopia = tablero;
+        //Randomiza el orden de los números
+        const tableroRandom = sortRandom(tableroInicial);
+        const tableroFinal = [];
 
-        //Devuelve el tablero completo con el orden de las fichas aleatorio
-        return tablero.concat(tableroCopia).map(sortRandom);
+        for(let i=1; i <= dimension; i++){
+            //Agrupa los items por filas dependiendo de la dimensión
+            tableroFinal.push(tableroRandom.splice(0, dimension));
+        }
+
+        return tableroFinal;
     }
 
     const irAlMenu = () => {
